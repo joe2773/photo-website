@@ -1,0 +1,85 @@
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+*.sln
+*.suo
+*.user
+*.csproj
+*.obj
+*.bin
+*.pdb
+*.cache
+*.log
+[Bb]in/
+[Oo]bj/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.o
+*.pyc
+
+# Resharper
+_ReSharper.*
+*.ReSharper.*
+resharper_dotCover/
+*.DotSettings.user
+
+# Windows Modules Installer
+*.cab
+*.msi
+*.msm
+*.msp
+
+# NuGet
+**/packages/*
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# MSTest
+*.trx
+*.vsmdi
+*.testsettings
+
+# Test Results
+[TestResults|_TestResults]*
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+bin/
+obj/
+*/build/
+*/publish/
+*/testresults/
