@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <ItemGroup>
+    <ProjectReference Include="..\MyPhotoApp.Domain\MyPhotoApp.Domain.csproj" />
+    <ProjectReference Include="..\MyPhotoApp.Infrastructure\MyPhotoApp.Infrastructure.csproj" />
+  </ItemGroup>
+ <ItemGroup>
+   <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+ </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
