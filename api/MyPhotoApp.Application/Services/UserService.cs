@@ -29,7 +29,15 @@ namespace MyPhotoApp.Application.Services {
            var users = await _userRepository.GetAllAsync();
            return _mapper.Map<IEnumerable<UserDto>>(users);
         }
+
         public async Task CreateUserAsync(UserDto user){
+            var validator = new UserValidator();
+            var result = validator.Validate(user);
+
+            if (!result.IsValid)
+            {
+                throw new InvalidDataException("invalid");
+            }
             var userToCreate = _mapper.Map<User>(user);
             await _userRepository.AddAsync(userToCreate);
         }

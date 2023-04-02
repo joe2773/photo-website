@@ -49,8 +49,19 @@ namespace MyPhotoApp.Api.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> CreateUser([FromBody] UserDto user){
+            try{
             await _userService.CreateUserAsync(user);
             return Ok(user);
+            }
+            catch(ArgumentException ex){
+                return NotFound(ex.Message);
+            }
+            catch(InvalidDataException ex){
+                return BadRequest(ex.Message);
+            }
+            catch(Exception ex){
+                return StatusCode(500,ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
