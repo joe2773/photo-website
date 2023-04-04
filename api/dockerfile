@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /app
+
+# Copy and restore all csproj files
+COPY MyPhotoApp.Domain/*.csproj ./MyPhotoApp.Domain/
+COPY MyPhotoApp.Api/*.csproj ./MyPhotoApp.Api/
+COPY MyPhotoApp.Application/*.csproj ./MyPhotoApp.Application/
+COPY MyPhotoApp.Infrastructure/*.csproj ./MyPhotoApp.Infrastructure/
+
+RUN dotnet restore MyPhotoApp.Api/MyPhotoApp.Api.csproj
+
+# Copy entire project and build
+COPY . .
+WORKDIR /app/MyPhotoApp.Api
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/MyPhotoApp.Api/out ./
+
+EXPOSE 80
+ENTRYPOINT ["dotnet", "MyPhotoApp.Api.dll"]

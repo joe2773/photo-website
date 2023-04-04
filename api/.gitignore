@@ -12,10 +12,11 @@
 *.log
 [Bb]in/
 [Oo]bj/
-
+*.dll
 # Build results
 [Dd]ebug/
 [Rr]elease/
+out/
 x64/
 *_i.c
 *_p.c
