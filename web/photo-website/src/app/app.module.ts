@@ -9,6 +9,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { PhotoComponent } from './components/photo/photo.component';
 import { LikeComponent } from './components/like/like.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommentComponent } from './components/comment/comment.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
