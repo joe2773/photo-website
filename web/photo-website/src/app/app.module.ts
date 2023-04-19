@@ -10,6 +10,10 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { LikeComponent } from './components/like/like.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { GeneratePhotoComponent } from './components/generate-photo/generate-photo.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     UserProfileComponent,
     PhotoComponent,
     LikeComponent,
-    CommentComponent
+    CommentComponent,
+    GeneratePhotoComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxFileDropModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

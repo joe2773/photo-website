@@ -1,0 +1,28 @@
+
+<div
+    class="generate-photo__container">
+    <div>
+    <form
+        class="generate-photo__prompt-form"
+        [formGroup]="form" (ngSubmit)="generateImage()">
+        <label>Prompt</label>
+        <input type = "text" formControlName = "prompt" placeholder= "e.g a painting of a labrador in the style of claude monet"/>
+        <label>Image size</label>
+        <select formControlName="imageSize">
+            <option [value] = "imageSizeEnum.Small">Small</option>
+            <option [value] = "imageSizeEnum.Medium">Medium</option>
+            <option [value] = "imageSizeEnum.Large">Large</option>
+            </select>
+        <div
+            class="generate-photo__button">
+            <button type="submit">Create</button>
+        </div>
+    </form>
+    </div>
+    <div class="generate-photo__loading-spinner" *ngIf="isLoading"></div>
+    <div
+        class="generate-photo__result"
+        *ngIf="generatedImageUrl$ | async as url">
+        <img [src] = "url">     
+    </div>
+</div>
