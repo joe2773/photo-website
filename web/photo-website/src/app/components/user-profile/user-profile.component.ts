@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../model/app.model';
+
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 @Component({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  public user$ : Observable<User> | null = null;
+  public user$ : Observable<any> | null = null;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
