@@ -7,36 +7,27 @@ import { ImageSize } from '../model/enum/imageSizeEnum';
   providedIn: 'root'
 })
 export class DallEService {
-  private readonly API_KEY = "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";
-  private readonly API_BASE_URL = "https://api.openai.com/v1"
+  private readonly API_BASE_URL = "http://54.152.84.18:3000"
   constructor(private client:HttpClient) { }
 
   generateImageEdit(imageData: File, prompt: string) : Observable<string> {
-    const headers = {
-      headers: new HttpHeaders({
-        'Authorization' : 'Bearer ' + this.API_KEY
-      })
-    };
-    
-    const formData = new FormData();
-    formData.append('image', imageData);
-    formData.append('prompt', prompt);
-    return this.client.post<string>(this.API_BASE_URL + "/images/edits", formData, headers);
+    const requestBody = {
+      "image" : imageData,
+      "prompt" : prompt
+    }
+    return this.client.post<ImageGenerationResponse>(this.API_BASE_URL + "/edit-image", requestBody).pipe(
+      filter(response => !!response && !!response.data),
+      map(response => response.data[0]?.url)
+    );
   }
 
   generateImage(prompt: string,imageSize: ImageSize): Observable<string> {
-    const headers = {
-      headers: new HttpHeaders({
-      'Authorization' : 'Bearer ' + this.API_KEY,
-      'Content-type' : 'application/json'
-    })}
-
     const requestBody = {
-      prompt: prompt,
-      n: 1,
-      size : this.mapImageSize(imageSize)
+      "prompt": prompt,
+      "size" : this.mapImageSize(imageSize)
     }
-    return this.client.post<ImageGenerationResponse>(this.API_BASE_URL + "/images/generations", JSON.stringify(requestBody), headers).pipe(
+    console.log(requestBody);
+    return this.client.post<ImageGenerationResponse>(this.API_BASE_URL + "/generate-image", requestBody).pipe(
       filter( response => !!response && !!response.data ),
       map(response => response.data[0]?.url)
     );

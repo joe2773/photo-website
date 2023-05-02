@@ -14,6 +14,12 @@ RUN npm run build --prod
 # Stage 2: Serve the Angular app using Nginx
 FROM nginx:1.21
 
+# Expose port 80 for HTTP traffic
+EXPOSE 80
+
 COPY --from=build /app/dist/photo-website /usr/share/nginx/html
 
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+
+# Start Nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
